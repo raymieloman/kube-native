@@ -52,7 +52,7 @@ pipeline {
             }
             steps {
                 sh 'docker --context=stageserver login -u jenkins -p ${MSR_ACCESS_KEY} ${MSR_FQDN_PORT} ; \
-                docker version ;\
+                docker --version ;\
                 BUILDNO=$(echo ${TAG} | sed "s/.*\\.//"); \
                 curl -k https://${MSR_FQDN_PORT}/ca \
                     -o /usr/local/share/ca-certificates/${MSR_FQDN_PORT}.crt ; \
