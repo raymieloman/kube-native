@@ -63,7 +63,7 @@ pipeline {
                 docker --context=stageserver image tag \
                     ${MSR_FQDN_PORT}/engineering/api-build:rc-${MAJORMINOR}.${BUILDNO} \
                     ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO} ; \
-                #docker --context=stageserver trust sign ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO}'
+                docker --context=stageserver image push ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO}'
             }
         }
     }
