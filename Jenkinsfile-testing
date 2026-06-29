@@ -57,7 +57,6 @@ pipeline {
                 curl -k https://${MSR_FQDN_PORT}/ca \
                     -o /usr/local/share/ca-certificates/${MSR_FQDN_PORT}.crt ; \
                 update-ca-certificates; \
-                #docker --context=stageserver trust key load ${JENKINS_PK}; \
                 docker --context=stageserver image pull \
                     ${MSR_FQDN_PORT}/engineering/api-build:rc-${MAJORMINOR}.${BUILDNO}; \
                 docker --context=stageserver image tag \
