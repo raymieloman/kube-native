@@ -64,7 +64,7 @@ pipeline {
                     ${MSR_FQDN_PORT}/engineering/api-build:rc-${MAJORMINOR}.${BUILDNO} \
                     ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO} ; \
                 docker --context=stageserver image push ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO} ; \
-                cosign sign --key ${COSIGN_PK} ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO}'
+                cosign sign --key ${COSIGN_PK} --tlog-upload=false ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO}'
             }
         }
     }
