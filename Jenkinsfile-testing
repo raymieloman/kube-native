@@ -48,7 +48,7 @@ pipeline {
               MSR_ACCESS_KEY=credentials('jenkins-msr-access-token')
               MAJORMINOR = '0.0'
               DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=credentials('jenkins-content-trust')
-              JENKINS_PK=credentials('jenkins-key')
+              COSIGN_PK=credentials('cosign-key')
             }
             steps {
                 sh 'docker --context=stageserver login -u jenkins -p ${MSR_ACCESS_KEY} ${MSR_FQDN_PORT} ; \
@@ -63,7 +63,7 @@ pipeline {
                     ${MSR_FQDN_PORT}/engineering/api-build:rc-${MAJORMINOR}.${BUILDNO} \
                     ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO} ; \
                 docker --context=stageserver image push ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO} ; \
-                cosign sign --key ${cosign-key} ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO}'
+                cosign sign --key ${COSIGN_PK} ${MSR_FQDN_PORT}/engineering/api:${MAJORMINOR}.${BUILDNO}'
             }
         }
     }
