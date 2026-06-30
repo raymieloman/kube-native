@@ -49,6 +49,7 @@ pipeline {
               MAJORMINOR = '0.0'
               DOCKER_CONTENT_TRUST_REPOSITORY_PASSPHRASE=credentials('jenkins-content-trust')
               COSIGN_PK=credentials('cosign-key')
+              COSIGN_PASSWORD=credentials('cosign-password')
             }
             steps {
                 sh 'docker --context=stageserver login -u jenkins -p ${MSR_ACCESS_KEY} ${MSR_FQDN_PORT} ; \
